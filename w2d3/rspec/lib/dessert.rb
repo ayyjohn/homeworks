@@ -2,6 +2,7 @@ require 'active_support/inflector'
 
 class Dessert
   attr_reader :type, :quantity, :ingredients, :temp
+  attr_accessor :chef
 
   def initialize(type, quantity, chef)
     raise ArgumentError unless quantity.is_a?(Integer)
