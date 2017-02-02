@@ -47,3 +47,17 @@ def quick_sort(array)
 end
 
 p quick_sort(quick_fish).last
+
+smart_fish = fish.dup
+
+def linear_max(array)
+  max = -1
+  array.each_with_index do |el, index|
+    if el.length > max
+      max = index
+    end
+  end
+  max
+end
+
+p linear_max(smart_fish)
