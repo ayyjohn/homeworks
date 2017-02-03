@@ -1,7 +1,6 @@
 class LRUCache
     def initialize(max_length)
-      @store = []
-      @max_length = max_length
+      @store, @max_length = [], max_length
     end
 
     def count
@@ -13,9 +12,7 @@ class LRUCache
       # adds element to cache according to LRU principle
       @store.delete(el)
       @store << el
-      if @store.length > @max_length
-        @store.shift
-      end
+      @store.shift if @store.length > @max_length
     end
 
     def show
