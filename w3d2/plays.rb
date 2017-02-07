@@ -21,27 +21,23 @@ class Play
 
   def self.find_by_title(title)
     PlayDBConnection.instance.execute(<<-SQL, title)
-      SELECT
-        *
-      FROM
-        plays
-      WHERE
-        title = ?
+
+      SELECT *
+      FROM plays
+      WHERE title = ?
 
     SQL
   end
 
   def self.find_by_playwrite(name)
     PlayDBConnection.instance.execute(<<-SQL, name)
-      SELECT
-        *
-      FROM
-        plays
-      JOIN
-        playwrights ON playwrights.id = plays.playwright_id
-      WHERE
-        playwrights.name = ?
-      SQL
+
+      SELECT *
+      FROM plays
+      JOIN playwrights ON playwrights.id = plays.playwright_id
+      WHERE playwrights.name = ?
+
+    SQL
   end
 
   def initialize(options)
@@ -54,10 +50,10 @@ class Play
   def create
     raise "#{self} already in database" if @id
     PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
-      INSERT INTO
-        plays (title, year, playwright_id)
-      VALUES
-        (?, ?, ?)
+
+      INSERT INTO plays (title, year, playwright_id)
+      VALUES (?, ?, ?)
+
     SQL
     @id = PlayDBConnection.instance.last_insert_row_id
   end
@@ -65,12 +61,11 @@ class Play
   def update
     raise "#{self} not in database" unless @id
     PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id, @id)
-      UPDATE
-        plays
-      SET
-        title = ?, year = ?, playwright_id = ?
-      WHERE
-        id = ?
+
+      UPDATE plays
+      SET title = ?, year = ?, playwright_id = ?
+      WHERE id = ?
+
     SQL
   end
 end
@@ -80,17 +75,16 @@ class PlayWright
   attr_accessor :name, :birth
   def self.all
     data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
-    data.map { |datum| PlayWright.new(datum)}
+    data.map { |datum| PlayWright.new(datum) }
   end
 
   def self.find_by_name(name)
     PlayDBConnection.instance.execute(<<-SQL, name)
-      SELECT
-        *
-      FROM
-        playwrights
-      WHERE
-        name = ?
+
+      SELECT *
+      FROM playwrights
+      WHERE name = ?
+
     SQL
   end
 
@@ -103,10 +97,10 @@ class PlayWright
   def create
     raise "#{self} is already in the database" if @id
     PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year)
-      INSERT INTO
-        playwrights(name, birth_year)
-      VALUES
-        (?, ?)
+
+      INSERT INTO playwrights(name, birth_year)
+      VALUES (?, ?)
+
     SQL
     @id = PlayDBConnection.instance.last_insert_row_id
   end
@@ -114,25 +108,22 @@ class PlayWright
   def update
     raise "#{self} not in database" unless @id
     PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year, @id)
-      UPDATE
-        playwrights
-      SET
-        birth_year = ?
-      WHERE
-        id = ?
+
+      UPDATE playwrights
+      SET birth_year = ?
+      WHERE id = ?
+
     SQL
   end
 
   def get_plays
     PlayDBConnection.instance.execute(<<-SQL, @name)
-      SELECT
-        *
-      FROM
-        playwrights
-      JOIN
-        plays ON playwrights.id = plays.playwright_id
-      WHERE
-        name = ?
+
+      SELECT *
+      FROM playwrights
+      JOIN plays ON playwrights.id = plays.playwright_id
+      WHERE name = ?
+
     SQL
   end
 
