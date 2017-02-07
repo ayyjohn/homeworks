@@ -9,7 +9,7 @@ CREATE TABLE plays (
   FOREIGN KEY (playwright_id) REFERENCES playwrights(id)
 );
 
-DROP TABLE if exists playwrights;
+DROP TABLE if EXISTS playwrights;
 
 CREATE TABLE playwrights (
   id INTEGER PRIMARY KEY,
