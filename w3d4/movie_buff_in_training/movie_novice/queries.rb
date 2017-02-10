@@ -23,7 +23,7 @@
 
 def find_angelina
   #find Angelina Jolie by name in the actors table
-  Actor.find_by("name = ? ", 'Angelina Jolie')
+  Actor.find_by("name = Angelina Jolie")
 end
 
 def top_titles
@@ -31,7 +31,7 @@ def top_titles
   # hint: use 'select' and 'where'
   Movie
     .select('id', 'title')
-    .where("score >= ?", 9)
+    .where("score >= 9")
 end
 
 def star_wars
@@ -39,7 +39,7 @@ def star_wars
   # hint: use 'select' and 'where'
   Movie
     .select('id', 'title', 'yr')
-    .where("title LIKE ?", '%Star Wars%')
+    .where("title LIKE '%Star Wars%'")
 end
 
 
@@ -50,7 +50,7 @@ def below_average_years
   # hint: use 'select', 'where', 'group', 'order'
   Movie
     .select('yr', "COUNT(*) AS bad_movies")
-    .where('score < ?', 5)
+    .where('score < 5')
     .group('yr')
     .order('yr')
 end
@@ -74,9 +74,8 @@ def pulp_fiction_actors
 
   Actor
     .select('id', 'name')
-    .joins("JOIN castings ON castings.actor_id = actors.id")
-    .joins("JOIN movies ON movies.id = castings.movie_id")
-    .where('title = ?', 'Pulp Fiction')
+    .joins(:movies)
+    .where('title = Pulp Fiction')
   # Movie
   #   .find_by('title = ?', 'Pulp Fiction')
   #   .actors
@@ -90,8 +89,7 @@ def uma_movies
 
   Movie
     .select('id', 'title', 'yr')
-    .joins("JOIN castings ON castings.movie_id = movies.id")
-    .joins("JOIN actors ON actors.id = castings.actor_id")
-    .where('name = ?', 'Uma Thurman')
+    .joins(:actors)
+    .where('name = Uma Thurman')
     .order('yr ASC')
 end
