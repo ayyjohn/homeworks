@@ -76,12 +76,24 @@
 
         <label for="rating">Rating</label>
         <select id="rating" type="radio">
-          <option value="1">1</option>
+          <option value="1" "selected">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </input>
+        </select>
+        <label for="cooking_expertise">Cooking Expertise</label>
+        <select id="cooking_expertise" type="radio">
+          <option disabled value="select_cooking_expertise" "selected">--Select Cooking Value--</option>
+          <option value="sometimes_cook">I sometimes cook</option>
+          <option value="cook_everyday">I cook every day</option>
+          <option value="cooking_is_a_hobby">Cooking is a hobby for me</option>
+          <option value="professional_chef">I am a professional chef</option>
+        </select>
+
+        <label for="review">Review</label>
+        <textarea id="rating">
+        </textarea>
       </form>
     </section>
     <footer>
