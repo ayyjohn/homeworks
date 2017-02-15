@@ -21,4 +21,6 @@ ActiveRecord::Schema.define(version: 20170215062756) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "users", ["username"], name: "index_users_on_username"
+
 end
