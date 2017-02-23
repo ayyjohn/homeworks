@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+ul.ingredients-list {
+    list-style: square inside;
+    list-style: hebrew;
+}
+
+header>img {
+    width: 100px;
+}
+
+ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    background-color: #00AAFF;
+}
