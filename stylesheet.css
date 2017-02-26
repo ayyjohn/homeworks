@@ -24,6 +24,35 @@ ul li a {
     text-decoration: none;
 }
 
-* {
-    background-color: #00AAFF;
+body {
+    background: #00AAFF;
+}
+
+input[type="radio"], select, input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+}
+input:last-child {
+
+  background: grey;
+}
+
+input:last-child:hover {
+    -webkit-filter: brightness(80%);
+}
+
+ol li:nth-child(2n) {
+  background: grey;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    width: 27px;
+    height: 27px;
+    background-image: url(stars.png);
+    vertical-align: bottom;
+}
+
+h2 + .user_review {
+    border-top: 1px solid black;
 }
