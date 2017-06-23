@@ -1,0 +1,28 @@
+@import 'bootstrap';
+
+.container {
+  width: 350px;
+  margin: 400px auto;
+  padding: 20px;
+  background: black;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 40px;
+}
+
+body {
+  background: url('splash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  line-height: 1.5;
+  color: white;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 60px;
+}
+
+p {
+  font-family: arial;
+}
